@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>For My Forever Valentine 💖</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Parisienne&family=Poppins:wght@300;400;600&display=swap"
@@ -23,18 +23,29 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            height: 100%;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             background: var(--bg-gradient);
             height: 100vh;
+            width: 100vw;
             overflow: hidden;
+            position: fixed;
             display: flex;
             justify-content: center;
             align-items: center;
             color: var(--text-color);
             perspective: 1000px;
+            touch-action: none;
         }
 
         /* Particle Background */
@@ -151,6 +162,7 @@
             box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
             text-decoration: none;
             display: inline-block;
+            touch-action: manipulation;
         }
 
         .btn:hover {
@@ -251,6 +263,7 @@
             z-index: 100;
             font-size: 24px;
             transition: all 0.3s;
+            touch-action: manipulation;
         }
 
         .music-control:hover {
@@ -341,6 +354,11 @@
         // ACTION: Customize your love letter here
         const loveLetterText = "Dearest Love,\n\nFrom the moment I met you, my world has been brighter. Your smile is my favorite sight, and your laughter is my favorite sound.\n\nI cherish every moment we share, and I want to create a million more memories with you.\n\nSo, I have a very important question...";
         /* --------------------- */
+
+        // Prevent scrolling on mobile
+        document.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
 
         // Particle System
         function createParticles() {
